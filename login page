@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple PHP Login</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-box {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #45a049;
+        }
+        .message {
+            margin-top: 15px;
+            font-size: 16px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <h2>Login</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Enter Username" required>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <input type="submit" name="login" value="Login">
+    </form>
+
+    <div class="message">
+        <?php
+        if(isset($_POST['login'])){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            // Hardcoded credentials
+            $correct_user = "admin";
+            $correct_pass = "1234";
+
+            if($username == $correct_user && $password == $correct_pass){
+                echo "<span style='color:green;'>Login Successful. Welcome, $username!</span>";
+                // You can redirect to dashboard using:
+                // header("Location: dashboard.php");
+            } else {
+                echo "Invalid username or password.";
+            }
+        }
+        ?>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+ Explanation
+Form inputs for username and password.
+
+Checks credentials against hardcoded values (admin / 1234).
+
+Displays success or error message.
+
+Uses CSS for a neat centered login box.
